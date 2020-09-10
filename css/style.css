@@ -1,0 +1,443 @@
+@font-face {
+    font-family: Raleway;
+    src: url(../fonts/raleway/Raleway-Light.ttf);
+    font-style: normal;
+    font-weight: 300;
+}
+@font-face {
+    font-family: Raleway;
+    src: url(../fonts/raleway/Raleway-Regular.ttf);
+    font-style: normal;
+    font-weight: 400;
+}
+@font-face {
+    font-family: Raleway;
+    src: url(../fonts/raleway/Raleway-Bold.ttf);
+    font-style: normal;
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: floyd;
+    src: url(../fonts/floyd.ttf);
+}
+
+.floyd {
+    font-family: floyd, monospace;
+}
+
+html {
+    height: 100%;
+    width: 100%;
+    background-color: #121212;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #333333;
+}
+
+#content {
+    width: calc(100% - 40px);
+    height: calc(100% - 40px);
+    background-color: #333333;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 20px;
+    margin-bottom: 0;
+    position: fixed;
+}
+
+
+
+#overlay {
+    /*background-color: rgba(255, 0, 130, 0.2);*/
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: none;
+}
+
+/*#bgvid {*/
+/*position: fixed;*/
+/*top: 50%;*/
+/*left: 50%;*/
+/*min-width: 100%;*/
+/*min-height: 100%;*/
+/*width: auto;*/
+/*height: auto;*/
+/*z-index: -100;*/
+/*transform: translateX(-50%) translateY(-50%);*/
+/*background-size: cover;*/
+/*transition: 1s opacity;*/
+/*}*/
+
+#top-bar {
+    margin: 10px;
+    padding: 0;
+    float: right;
+    cursor: pointer;
+}
+
+#top-bar .title {
+    /*color: #ce202a;*/
+    color: white;
+    text-shadow: 1px 1px 0px rgba(0, 0, 0, 1);
+    font-size: 2rem;
+    padding: 0;
+    margin: 0;
+    line-height: 1;
+    font-weight: 100;
+}
+
+#top-bar:hover > #subtitle {
+    opacity: 1;
+    /*height: auto;*/
+}
+
+#top-bar #subtitle {
+    font-size: 1.2rem;
+    color: #eeeeee;
+    text-shadow: 1px 1px 0px rgba(0, 0, 0, 1);
+    text-align: center;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    margin-right: 20px;
+    opacity: 0;
+    /*height: 0;*/
+    overflow: hidden;
+    transition: opacity .3s .25s, height .3s .25s;
+}
+
+/* Subtitle */
+
+.sub-container {
+    /*background-color: red;*/
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    margin-bottom: 15px;
+    order: 1;
+}
+
+.sub-bar {
+    /*position: absolute;*/
+    padding: 0px 25px;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 1.85rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.9);
+    box-sizing: border-box;
+    width: 100% !important;
+}
+
+/* Controls */
+
+#controls {
+    /*background-color: rgba(255, 0, 0, 0.3);*/
+    margin: 10px;
+    padding: 0.1rem;
+    position: absolute;
+    bottom: 50%;
+    right: 0;
+    transform: translateY(50%);
+}
+
+#controls button {
+    background-color: transparent;
+    color: rgba(255, 255, 255, 0.7);
+    text-shadow: 1px 1px 0px rgba(0, 0, 0, 7);
+    font-size: 1.2rem;
+    width: 2.4rem;
+    height: 2.4rem;
+    transition: 150ms all;
+}
+
+#controls button:hover {
+    /*background: rgba(255, 255, 255, 0.23);*/
+    color: rgba(255, 255, 255, 1);
+    text-shadow: 1px 1px 0px rgba(0, 0, 0, 1);
+}
+
+#controls button:last-child {
+    margin-bottom: 0;
+}
+
+/* Song List */
+
+#side-bar {
+    font-family: Agenda-Light, Agenda, Arial Narrow, sans-serif;
+    font-weight: 100;
+    /*background: rgba(0, 0, 0, 0.5);*/
+    color: white;
+    padding: 0;
+    min-width: 33%;
+    margin: 10px;
+    float: left;
+    font-size: 1.2rem;
+    overflow-y: auto;
+    max-height: calc(100% - 20px);
+    box-sizing: border-box;
+}
+
+#song-title {
+    /*background-color: darkgreen;*/
+    text-align: center;
+    font-size: 1rem;
+    margin: 0;
+    padding: 0;
+    white-space: nowrap;
+    text-shadow: 1px 1px 0px rgb(0, 0, 1);
+    font-family: "Raleway", serif;
+    display: none;
+}
+
+#song-list {
+    list-style: none;
+    text-shadow: 1px 1px 0px rgb(0, 0, 1);
+    font-size: 1.3rem;
+    padding: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    /*background-color: coral;*/
+    overflow: hidden;
+    /*font-weight: 300;*/
+    display: flex;
+    flex-direction: column;
+
+}
+
+#song-list:hover {
+    /*overflow: visible;*/
+    /*background-color: slateblue;*/
+    /*padding-bottom: 3rem;*/
+}
+
+#song-list:hover > li {
+    opacity: 1;
+    padding: 0;
+    height: 1.6rem;
+    line-height: 1.6rem;
+}
+
+#song-list:hover > li:before {
+    opacity: 1;
+    margin-right: 5px;
+    width: 45px;
+}
+
+#song-list li:before {
+    content: counter(my-counter) " - ";
+    display: block;
+    vertical-align: middle;
+    text-align: right;
+    text-shadow: 1px 1px 0px rgb(0, 0, 0.9);
+    color: #ececec;
+    /*margin-left: -25px;*/
+    margin-right: 5px;
+    width: 0px;
+    float: left;
+    font-family: Agenda-Light, Agenda, Arial Narrow, sans-serif;
+    opacity: 0;
+    transition: all .7s;
+}
+
+#song-list li {
+    counter-increment: my-counter;
+    cursor: pointer;
+    opacity: 0;
+    padding: 0;
+    height: 0;
+    transition: opacity .3s .25s, padding .3s .25s, height .3s .25s;
+    /*background-color: slateblue;*/
+    color: #bdbdbd;
+}
+
+#song-list li:hover {
+    cursor: pointer;
+    color: white;
+}
+
+#song-list li.current {
+    color: white;
+    opacity: 1;
+    padding: 0 0px;
+    height: 1.6rem;
+    line-height: 1.6rem;
+    font-family: floyd, sans-serif;
+}
+
+/*Outros*/
+
+/*h1 {*/
+/*font-size: 3rem;*/
+/*text-transform: uppercase;*/
+/*margin-top: 0;*/
+/*letter-spacing: .3rem;*/
+/*}*/
+
+/*button {*/
+/*display: block;*/
+/*!*width: 80%;*!*/
+/*padding: .2rem .4rem;*/
+/*border: none;*/
+/*margin: 0.7rem auto;*/
+/*font-size: 1.1rem;*/
+/*background: rgba(255, 255, 255, 0.23);*/
+/*color: #fff;*/
+/*border-radius: 3px;*/
+/*cursor: pointer;*/
+/*transition: .3s background;*/
+/*box-sizing: border-box;*/
+/*outline: none;*/
+
+/*}*/
+
+/*button:hover {*/
+/*background: rgba(0, 0, 0, 0.5);*/
+/*}*/
+
+/*a {*/
+/*display: inline-block;*/
+/*color: #fff;*/
+/*text-decoration: none;*/
+/*background: rgba(0, 0, 0, 0.5);*/
+/*padding: .5rem;*/
+/*transition: .6s background;*/
+/*}*/
+
+/*a:hover {*/
+/*background: rgba(0, 0, 0, 0.9);*/
+/*}*/
+
+/* MENU */
+
+#menu {
+    /*width: 250px;*/
+    /*height: 300px;*/
+    background-color: rgba(255, 255, 255, 0.99);
+    box-shadow: 0 1px 4px -1px rgba(0, 0, 0, 0.99);
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 7px;
+    position: absolute;
+    top: 10px;
+    left: calc(50% - 125px);
+    transition: width .1s .05s, height .1s .05s;
+    /*opacity: 0;*/
+    /*width: 0;*/
+    /*height: 0;*/
+    overflow: hidden;
+}
+
+.logo {
+    height: 40px;
+    line-height: 40px;
+    display: flex;
+    border-bottom: 1px solid #bdbdbd;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+}
+
+.logo img {
+    height: inherit;
+}
+
+.logo .quintao {
+    font-size: 25px;
+    text-align: center;
+    width: 100%;
+}
+
+/* Q OVERLAY */
+
+.Q_Wrapper .full-overlay {
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.3);
+    width: 100%;
+    height: 100%;
+    position: relative;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: 600ms background, 600ms opacity;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    /*display: none;*/
+    font-family: "Raleway", serif;
+}
+
+.Q_Wrapper .full-overlay .text {
+    font-size: 4em;
+    color: white;
+    text-shadow: 1px 1px 0px rgb(0, 0, 1);
+}
+
+.Q_Wrapper .full-overlay .subtext {
+    font-size: 2em;
+    color: white;
+    text-shadow: 1px 1px 0px rgb(0, 0, 1);
+}
+
+/* LOADING */
+
+#loading-full {
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    /*display: flex;*/
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: 600ms background;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    display: none;
+}
+
+#loading-full .text {
+    font-size: 4em;
+    color: white;
+    text-shadow: 1px 1px 0px rgb(0, 0, 1);
+}
+
+#loading-full .subtext {
+    font-size: 2em;
+    color: white;
+    text-shadow: 1px 1px 0px rgb(0, 0, 1);
+}
+
+@keyframes blinker {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.blink {
+    animation: blinker 0.9s infinite;
+}

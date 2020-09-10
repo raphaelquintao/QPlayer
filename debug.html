@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Video</title>
+    <style>
+        html, body {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            background-color: #333333;
+            /*background: #313131;*/
+            display: flex;
+        }
+
+        .content {
+            background-color: #4f4f4f;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
+            border-radius: 5px;
+            overflow: hidden;
+            margin: 20px;
+            position: relative;
+            flex: 1 100%;
+        }
+
+        .debug {
+            position: absolute;
+            margin: 25px;
+            /*background-color: rgba(249, 38, 114, 0.51);*/
+            background-color: rgba(225, 225, 225, 0.95);
+            padding: 5px 7px;
+            border-radius: 5px;
+            white-space: pre;
+            font-family: monospace;
+            font-size: 16px;
+        }
+
+        #debug1 {
+            top: 0;
+            left: 0;
+        }
+
+        #debug2 {
+            bottom: 0;
+            right: 50%;
+            transform: translateX(50%);
+            display: none;
+        }
+
+        #debug3 {
+            bottom: 0;
+            left: 0;
+        }
+
+        .QVideo {
+            display: none;
+        }
+
+        #square {
+            width: 400px;
+            height: 400px;
+            top: 50%;
+            left: 50%;
+            transform: translateY(-50%) translateX(-50%);
+            z-index: 100;
+            background-color: rgba(255, 0, 169, 0.3);
+            position: absolute;
+            pointer-events: none;
+            display: none;
+        }
+
+    </style>
+
+    <link rel="stylesheet" href="css/QPlayer.css">
+    <link rel="stylesheet" href="css/QSub.css">
+    <link rel="stylesheet" href="css/QChapter.css">
+
+    <script src="js/libs/require-2.3.3.min.js"></script>
+    <script src="js/main.js"></script>
+
+
+</head>
+<body>
+<!--<div class="content">-->
+<!--<video id="video1" class="QVideo" >-->
+<!--&lt;!&ndash;<source src="http://www.saveitoffline.com/get/?i=3n8W9mdjxnrxdHeeqFp2RghGQTkd1wkx" type="video/mp4">&ndash;&gt;-->
+<!--&lt;!&ndash;<source src="http://www.youtubeinmp4.com/redirect.php?video=dUXzvIUqmSA" type="video/mp4">&ndash;&gt;-->
+<!--<source src="media/the_wall.mp4" type="video/mp4">-->
+
+<!--<track src="media/pt-br.srt" kind="subtitles" srclang="pt" label="Portuguese">-->
+<!--<track src="media/eng.vtt" kind="subtitles" srclang="en" label="English" default>-->
+
+<!--<track src="media/chapters.vtt" kind="chapters" srclang="en" label="Song List" default>-->
+<!--</video>-->
+<!--</div>-->
+
+<div class="content">
+    <video id="video1" class="QVideo">
+        <source src="media/sintel/sintel-1280-surround.mp4" type="video/mp4">
+
+        <track src="media/sintel/sintel_fr.srt" kind="subtitles" srclang="fr" label="Français">
+        <track src="media/sintel/sintel_ru.srt" kind="subtitles" srclang="ru" label="Russian">
+        <track src="media/sintel/sintel_de.srt" kind="subtitles" srclang="de" label="Deutsch">
+        <track src="media/sintel/sintel_jp.srt" kind="subtitles" srclang="jp" label="Japanese">
+        <track src="media/sintel/sintel_en.srt" kind="subtitles" srclang="en" label="English" default>
+        <track src="media/sintel/sintel_es.srt" kind="subtitles" srclang="es" label="Español">
+        <track src="media/sintel/sintel_pt.srt" kind="subtitles" srclang="pt" label="Portuguese">
+
+        <track src="media/sintel/chapters.vtt" kind="chapters" srclang="en" label="Chapters" default>
+    </video>
+</div>
+
+<div id="debug1" class="debug">Debug 1</div>
+<div id="debug2" class="debug">Debug 2</div>
+<div id="debug3" class="debug">Debug 3</div>
+
+<div id="square"></div>
+
+</body>
+</html>

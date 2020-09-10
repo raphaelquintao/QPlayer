@@ -1,0 +1,147 @@
+.qs-select {
+  color: #f1f1f1;
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 10px;
+  /*overflow: hidden;*/
+  text-align: right;
+  font-size: 13px;
+  filter: drop-shadow(0px 1px 2px rgba(0,0,0,0.8));
+}
+
+.qs-list-container {
+  border-radius: 3px;
+  background-color: #262626;
+  font-size: 0.95em;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  max-width: 0;
+  text-align: left;
+  padding: 1px;
+}
+
+.qs-list-header {
+  border-bottom: 1px solid #000;
+  line-height: 2.1em;
+  padding-left: .8em;
+  font-size: 1.20em;
+  white-space: nowrap;
+  cursor: default;
+}
+
+.qs-list {
+  font-weight: 400;
+  padding: 0 0 3px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.qs-list div:last-child {
+  border-bottom: 0;
+}
+
+.qs-current {
+  /*text-shadow: 0 0 3px rgba(0, 0, 0, 1);*/
+  cursor: pointer;
+  font-size: 1em;
+  padding: 0 0.2em;
+  opacity: 0.4;
+  position: relative;
+  display: inline-block;
+  font-weight: 300;
+}
+
+.qs-current::before {
+  border-top: 8px solid #262626;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) translateY(-100%);
+  top: -1px;
+  opacity: 0;
+}
+
+.qs-current,
+.qs-current::before,
+.qs-list-container {
+  transition: opacity 250ms ease-in, max-width 0s 250ms, max-height 0s 250ms, margin 0s 250ms;
+}
+
+.qs-show .qs-current,
+.qs-show .qs-current::before,
+.qs-select:hover .qs-current,
+.qs-select:hover .qs-current::before {
+  opacity: 1;
+}
+
+.qs-show .qs-list-container,
+.qs-select:hover .qs-list-container {
+  transition-delay: 0s;
+  max-height: 100%;
+  max-width: 100%;
+  opacity: 1;
+  margin-bottom: 8px;
+}
+
+.qs-current.loading::after {
+  transition: opacity 250ms ease-in;
+  opacity: 1;
+  background-repeat: no-repeat;
+  background-position: left 0 center;
+  padding-left: 1em;
+  background-size: 1em;
+  content: '';
+  background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48c3ZnIHdpZHRoPSczMHB4JyBoZWlnaHQ9JzMwcHgnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDEwMCAxMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89InhNaWRZTWlkIiBjbGFzcz0idWlsLWJhbGwiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSJub25lIiBjbGFzcz0iYmsiPjwvcmVjdD48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg1MCA1MCkiPjxnPjxjaXJjbGUgY3g9IjAiIGN5PSIwIiByPSIxNSIgZmlsbD0iI2ZmZmZmZiIgdHJhbnNmb3JtPSIiPjxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9ImN5IiBjYWxjTW9kZT0ic3BsaW5lIiBkdXI9IjFzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSIgZnJvbT0iMzAiIHRvPSIzMCIgdmFsdWVzPSIzMDstMzA7MzAiIGtleVNwbGluZXM9IjAuNCAwLjggMC40IDAuODswLjggMC40IDAuOCAwLjQiIGtleVRpbWVzPSIwOzAuNTsxIj48L2FuaW1hdGU+PC9jaXJjbGU+PGFuaW1hdGVUcmFuc2Zvcm0gIHR5cGU9InJvdGF0ZSIgZnJvbT0iMCIgdG89IjM2MCIgZHVyPSIxcyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiPjwvYW5pbWF0ZVRyYW5zZm9ybT48L2c+PC9nPjwvc3ZnPg==);
+  position: absolute;
+  left: -1.1em;
+  height: 100%;
+}
+
+.qs-item {
+  cursor: pointer;
+  border-top: 1px solid #333;
+  border-bottom: 1px solid #000;
+  transition: background-color 150ms ease;
+}
+
+.qs-item:hover {
+  background-color: rgba(255, 255, 255, .1);
+}
+
+.qs-item[data-selected~=true] {
+  background-color: #111 !important;
+  border-top-color: #000;
+}
+
+.qs-item[data-selected~=true] .qs-label {
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMTAwJSIgdmVyc2lvbj0iMS4xIiB2aWV3Qm94PSIwIDAgMjQgMjQiIHdpZHRoPSIxMDAlIj48cGF0aCBkPSJNOSAxNi4yTDQuOCAxMmwtMS40IDEuNEw5IDE5IDIxIDdsLTEuNC0xLjRMOSAxNi4yeiIgZmlsbD0iI2ZmZiIgLz48L3N2Zz4=);
+  background-repeat: no-repeat;
+  background-position: left 0.65em center;
+  background-size: 1.65em;
+}
+
+.qs-label {
+  padding: 0.5em 1.7em 0.5em 2.8em;
+}
+
+.qs-info {
+  padding: 0 1.7em 0 3.8em;
+  font-size: 0.8em;
+  opacity: 0.8;
+  transition: max-height 250ms ease-in-out;
+  max-height: 0;
+  overflow: hidden;
+  white-space: pre;
+}
+
+.qs-list:hover .qs-item[data-selected~=true] .qs-info {
+  max-height: 10em;
+  /*margin-bottom: 0.3em;*/
+}
