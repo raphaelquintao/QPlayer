@@ -1,0 +1,6 @@
+*.jpg linguist-detectable=false
+*.png linguist-detectable=false
+*.mp4 linguist-detectable=false
+*.vtt linguist-detectable=false
+*.srt linguist-detectable=false
+*.js linguist-language=JavaScript
