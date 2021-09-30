@@ -8,6 +8,6 @@ the video and subtitles in a fully three-dimensional interface.
 Demo: [http://quintao.ninja/QPlayer/](http://quintao.ninja/QPlayer/)
 
 ### Code
-This old code was my first play with Three.js back in 2013.
+This old code was my first play with Three.js back in 2013, since then i have made some changes but never finished.
 
 By the way, it's still working pretty well until today. 
